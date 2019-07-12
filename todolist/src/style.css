@@ -1,3 +1,26 @@
-.liName{
-    color: royalblue
+/* 入场前 */
+.boss-text-enter{
+    opacity: 0;
+}
+/* 入场 */
+.boss-text-enter-active{
+    opacity: 1;
+    transition: opacity 2000ms;
+}
+/* 入场结束 */
+.boss-text-enter-done{
+    opacity: 1;
+}
+/* 出场前 */
+.boss-text-exit{
+    opacity: 1;
+}
+/* 出场 */
+.boss-text-exit-active{
+    opacity: 0;
+    transition: opacity 2000ms;
+}
+/* 出场结束 */
+.boss-text-exit-done{
+    opacity: 0;
 }
