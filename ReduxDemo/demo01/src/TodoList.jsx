@@ -1,64 +1,62 @@
-import React, { Component } from 'react';
-import 'antd/dist/antd.css';
-import { Input, Button, List } from 'antd';
-import store from './store/index';
-import { changeInput, addList, deleteItem } from './store/actionCreators';
+import React, { Component } from "react";
+import TodoListUI from "./TodoListUI";
+import store from "./store/index";
+import { changeInput, addList, deleteItem,getList } from "./store/actionCreators";
+import axios from 'axios'
 
+// 组件逻辑部分的编写
 class TodoList extends Component {
-	constructor(props) {
-		super(props);
-		this.state = store.getState();
-		this.changeValue = this.changeValue.bind(this);
-		this.addList = this.addList.bind(this);
-		this.storeChange = this.storeChange.bind(this);
-		// 订阅模式
-		store.subscribe(this.storeChange);
-	}
-	changeValue(e) {
-		const action = changeInput(e.target.value);
-		store.dispatch(action);
-		// this.setState({
-		//   inputValue:this.input.value
-		// })
-	}
-	storeChange() {
-		this.setState(store.getState());
-	}
-	addList() {
-		const action = addList();
-		store.dispatch(action);
-	}
-	deleteItem(index) {
-		const action = deleteItem(index);
-		store.dispatch(action);
-	}
-	render() {
-		return (
-			<div>
-				<div>
-					<Input
-						placeholder="write something"
-						style={{ width: '250px', marginRight: '10px' }}
-						onChange={this.changeValue}
-						// ref={(input)=>{this.input=input}}
-						value={this.state.inputValue}
-					/>
-					<Button type="primary" onClick={this.addList}>
-						增加
-					</Button>
-					<div style={{ margin: '10px', width: '300px' }} />
-					<List
-						bordered
-						dataSource={this.state.list}
-						renderItem={(item, index) => (
-							<List.Item onClick={this.deleteItem.bind(this, index)}>{item}</List.Item>
-						)}
-						style={{ width: '300px' }}
-					/>
-				</div>
-			</div>
-		);
-	}
+  constructor(props) {
+    super(props);
+    this.state = store.getState();
+    this.changeValue = this.changeValue.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
+    this.addList = this.addList.bind(this);
+    this.storeChange = this.storeChange.bind(this);
+    // 订阅模式
+    store.subscribe(this.storeChange);
+  }
+  changeValue(e) {
+    const action = changeInput(e.target.value);
+    store.dispatch(action);
+  }
+  storeChange() {
+    this.setState(store.getState());
+  }
+  addList() {
+    const action = addList();
+    store.dispatch(action);
+  }
+  deleteItem(index) {
+    const action = deleteItem(index);
+    store.dispatch(action);
+  }
+  componentDidMount() {
+    axios('https://www.easy-mock.com/mock/5d2c904f8d71b63bc63de269/xiechengyu/Demo1').then((res)=>{
+      console.log(res)
+      if(res.status === 200){
+        const action = getList(res)
+        store.dispatch(action)
+      }
+    }).catch((e) =>{
+      alert(`出现错误：${e}`)
+    })
+  }
+  render() {
+    return (
+      <div>
+        <div>
+          <TodoListUI
+            changeValue={this.changeValue}
+            inputValue={this.state.inputValue}
+            addList={this.addList}
+            list={this.state.list}
+            deleteItem={this.deleteItem}
+          />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default TodoList;
