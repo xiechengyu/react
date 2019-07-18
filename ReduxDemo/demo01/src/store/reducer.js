@@ -23,7 +23,7 @@ export default (state = defaultState, action) => {
     return newState;
   } else if (action.type === GET_LIST) {
     let newState = JSON.parse(JSON.stringify(state));
-    newState.list=action.data.data.list
+    newState.list=action.data.list
     return newState;
   }
   return state;
