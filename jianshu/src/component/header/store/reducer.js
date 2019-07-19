@@ -1,21 +1,38 @@
-import {INPUT_FOCUS,INPUT_BLUR} from '../../../store/actionTypes'
+import * as contants from '../../../store/actionTypes'
+import {fromJS} from 'immutable'
 
-const defaultState = {
-  focused: false
-}
+const defaultState = fromJS({
+  focused: false,
+  tab:false,
+  inputList:[],
+  page:0,
+  totalPage:1
+})
 export default (state=defaultState,action) => {
-  if(action.type === INPUT_FOCUS){
-    const newState = JSON.parse(JSON.stringify(state))
-    newState.focused = true
-    return newState
-    // return{
-    //   focused:true
-    // }
+  if(action.type === contants.INPUT_FOCUS){
+    return state.set("focused",true)
   }
-  if(action.type === INPUT_BLUR){
-    const newState = JSON.parse(JSON.stringify(state))
-    newState.focused = false
-    return newState
+  if(action.type === contants.INPUT_BLUR){
+    return state.set("focused",false)
+  }
+  if(action.type === contants.GET_INPUTLIST){
+    return state.merge({
+      "inputList":action.inputList,
+      "totalPage":action.totalPage
+    })
+  }
+  if(action.type === contants.TAB_SHOW){
+    return state.set("tab",true)
+  }
+  if(action.type === contants.TAB_HIDE){
+    return state.set("tab",false)
+  }
+  if(action.type === contants.CHANGE_PAGE){
+    let newPage = state.get("page")
+    const totalPage = state.get("totalPage")
+    newPage++
+    newPage %= totalPage
+    return state.set("page",newPage)
   }
   return state
 }
