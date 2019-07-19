@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './style.scss';
 import logo from './img/logo.png';
 import { CSSTransition } from 'react-transition-group';
-import { INPUT_FOCUS, INPUT_BLUR } from '../../store/actionTypes';
+import { actionCreators} from './store';
 
 const Header = (props) => {
 	return (
@@ -52,16 +52,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		inputFocus() {
-			const action = {
-				type: INPUT_FOCUS
-			};
-			dispatch(action);
+			dispatch(actionCreators.inputFocus());
 		},
 		inputBlur() {
-			const action = {
-				type: INPUT_BLUR
-			};
-			dispatch(action);
+			dispatch(actionCreators.inputBlur());
 		}
 	};
 };
