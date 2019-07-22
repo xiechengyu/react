@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './style.scss';
+
 class Download extends Component {
     constructor(props) {
         super(props);
@@ -6,7 +8,7 @@ class Download extends Component {
     }
     render() { 
         return ( 
-            <div>
+            <div className="download">
                 download
             </div>
          );
