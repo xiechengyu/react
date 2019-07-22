@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import TodoListUI from './TodoListUI';
 import store from './store/index';
-import { changeInput, addList, deleteItem, getTodoList } from './store/actionCreators';
+import { changeInput, addList, deleteItem, getMyList } from './store/actionCreators';
 
 // 组件逻辑部分的编写
 class TodoList extends Component {
@@ -31,7 +31,7 @@ class TodoList extends Component {
 		store.dispatch(action);
 	}
 	componentDidMount() {
-		const action = getTodoList();
+		const action = getMyList();
 		store.dispatch(action);
 	}
 	render() {
