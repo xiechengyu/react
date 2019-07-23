@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './style.scss';
 import { connect } from 'react-redux';
 import { actionCreators } from '../../store';
+import {Link} from 'react-router-dom'
 
 class List extends Component {
 	constructor(props) {
@@ -13,7 +14,6 @@ class List extends Component {
 	}
 	componentDidMount() {
 		this.props.getList();
-		console.log(this.props.list)
 	}
 	getListS() {
 		this.props.list.push(this.props.list);
@@ -22,7 +22,7 @@ class List extends Component {
 		return (
 			<div className="list">
 				{this.props.list.map((item, index) => (
-					<div className="list__item" key={index}>
+					<Link to="/detail" className="list__item" key={index}>
 						<div className="list__item--left">
 							<h3 className="list__item--left-title">{item.get('title')}</h3>
 							<p className="list__item--left-p">{item.get('desc')}</p>
@@ -34,7 +34,7 @@ class List extends Component {
 							</div>
 						</div>
 						<img src={item.get('imgUrl')} className="list__item--right" alt="" />
-					</div>
+					</Link>
 				))}
 				<div className="list__more" onClick={this.props.getMore}>
 					阅读更多
@@ -55,7 +55,7 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(actionCreators.getArticleList());
 		},
 		getMore() {
-		  dispatch(actionCreators.getMore());
+		  dispatch(actionCreators.getMoreList());
 		}
 	};
 };

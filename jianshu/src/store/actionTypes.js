@@ -1,8 +1,0 @@
-export const INPUT_FOCUS = "input_focus"
-export const INPUT_BLUR = "input_blur"
-export const GET_INPUTLIST = "get_inputList"
-export const TAB_SHOW = "tab_show"
-export const TAB_HIDE= "tab_hide"
-export const CHANGE_PAGE= "change_page"
-export const GET_LIST = "get_list"
-export const GET_MORE = "get_more"

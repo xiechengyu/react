@@ -1,4 +1,4 @@
-import * as contants from '../../../store/actionTypes'
+import * as contants from './actionTypes'
 import { fromJS } from 'immutable'
 import axios from 'axios'
 

@@ -1,3 +1,59 @@
-.author{
-  
+.author {
+	&__title {
+		display: flex;
+    justify-content: space-between;
+    &-2{
+      transition: all 0.2s;
+      cursor: pointer;
+      &:hover{
+        color: #787878;
+      }
+    }
+		span {
+			font-size: 14px;
+			color: #969696;
+			.iconfont {
+				display: inline-block;
+				transition: all 0.5s;
+				vertical-align: middle;
+				margin-right: 3px;
+				transform: rotate(360deg)
+			}
+		}
+	}
+	&__item {
+		width: 100%;
+		margin-top: 15px;
+		display: flex;
+		justify-content: space-between;
+		&--left {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			img {
+				margin-right: 15px;
+				width: 48px;
+				height: 48px;
+				border: 1px solid #ddd;
+				border-radius: 50%;
+			}
+			p {
+        font-size: 14px;
+        color: #333;
+      }
+      span{
+        font-size: 12px;
+        color: #969696;
+        margin-right: 10px;
+        line-height: 20px;
+      }
+    }
+    &--right{
+      span{
+        font-size: 13px;
+        color: #42c02e;
+        cursor: pointer;
+      }
+    }
+	}
 }

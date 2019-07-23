@@ -19,8 +19,8 @@ class Home extends Component {
                </div>
                <div className="home__right">
                    <Tab></Tab>
-                   <Author></Author>
                    <Download></Download>
+                   <Author></Author>
                </div>
             </div>
          );
