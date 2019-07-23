@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import TodoListUI from './TodoListUI';
 import store from './store/index';
 import { changeInput, addList, deleteItem, getMyList } from './store/actionCreators';
+import { connect } from 'react-redux'
 
 // 组件逻辑部分的编写
 class TodoList extends Component {
@@ -39,7 +40,7 @@ class TodoList extends Component {
 			<Fragment>
 				<TodoListUI
 					changeValue={this.changeValue}
-					inputValue={this.state.inputValue}
+					inputValue={this.props.inputValue}
 					addList={this.addList}
 					list={this.state.list}
 					deleteItem={this.deleteItem}
@@ -49,4 +50,10 @@ class TodoList extends Component {
 	}
 }
 
-export default TodoList;
+const stateToProps = (state) => {
+	return{
+		inputValue:state.inputValue
+	}
+}
+
+export default connect(stateToProps,null)(TodoList);
