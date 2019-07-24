@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './style.scss';
 import { connect } from 'react-redux';
 import { showTab, hideTab } from '../../store/actionCreators';
 
-class Download extends Component {
+class Download extends PureComponent {
 	constructor(props) {
 		super(props);
         this.state = {};

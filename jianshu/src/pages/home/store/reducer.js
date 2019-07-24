@@ -7,7 +7,8 @@ const defaultState = fromJS({
   qrUrl:"",
   showTab:false,
   authorList:[],
-  authorPage:0
+  authorPage:0,
+  showTop:false
 })
 export default (state=defaultState,action) => {
   if(action.type === contants.GET_LIST){
@@ -34,6 +35,9 @@ export default (state=defaultState,action) => {
     page ++
     page %= 4
     return state.set("authorPage",page)
+  }
+  if(action.type === contants.TOGGLE_TOP){
+    return state.set("showTop",action.data)
   }
   return state
 }

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './style.scss';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/actionCreators';
 
-class Author extends Component {
+class Author extends PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {};

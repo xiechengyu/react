@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './style.scss';
 import { connect } from 'react-redux';
 import { actionCreators } from '../../store';
 import {Link} from 'react-router-dom'
 
-class List extends Component {
+class List extends PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {

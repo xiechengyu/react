@@ -3,6 +3,8 @@
 	height: 56px;
 	background-color: #fff;
 	border-bottom: 1px solid #f0f0f0;
+	position: fixed;
+	z-index: 10;
 	&__content {
 		max-width: 1400px;
 		min-width: 1000px;

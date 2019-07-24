@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Header from './component/header';
@@ -8,7 +8,7 @@ import Write from './pages/write';
 import Login from './pages/login';
 import store from './store';
 
-class App extends Component {
+class App extends PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {};

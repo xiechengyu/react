@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import './style.scss'
 
-class Login extends Component {
+class Login extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {  }
   }
   render() { 
     return ( 
-      <div>
+      <div className="login">
         login~~
       </div>
      );

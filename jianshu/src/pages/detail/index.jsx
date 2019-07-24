@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
-class Detail extends Component {
+import React, { PureComponent } from 'react';
+import './style.scss'
+
+class Detail extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {  }
     }
     render() { 
         return ( 
-            <div>
+            <div className="detail">
                 detail~
             </div>
          );

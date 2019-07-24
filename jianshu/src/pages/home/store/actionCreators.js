@@ -10,6 +10,7 @@ const getMore = (data) => ({
     type: contants.GET_MORE,
     data: fromJS(data)
 })
+
 export const showTab = () => ({
     type: contants.SHWO_TAB
 })
@@ -24,6 +25,11 @@ export const getAuthor = (data) => ({
     type: contants.GET_AUTHOR,
     data:fromJS(data)
 })
+export const toggleTop = (data) => ({
+    type: contants.TOGGLE_TOP,
+    data
+})
+
 export const getArticleList = () => {
     return (dispatch) => {
         axios.get('https://www.easy-mock.com/mock/5d2fce82f639fd623b3043ab/jianshu/getHome').then(res => {

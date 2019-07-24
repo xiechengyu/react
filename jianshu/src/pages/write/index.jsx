@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import './style.scss'
 
-class Write extends Component {
+class Write extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {  }
   }
   render() { 
     return ( 
-      <div>
+      <div className="write">
         write~~
       </div>
      );
