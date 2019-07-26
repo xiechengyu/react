@@ -10,6 +10,7 @@ class Header extends Component {
 	constructor(props) {
 		super(props);
 		this.showTab = this.showTab.bind(this);
+		this.loginIcon = this.loginIcon.bind(this);
 	}
 	showTab() {
 		const { focused, inputList, page, tab } = this.props;
@@ -53,6 +54,39 @@ class Header extends Component {
 			return null;
 		}
 	}
+	loginIcon() {
+		if (this.props.loginStatus) {
+			return (
+				<span className="denglu" onClick={this.props.loginOut} style={{ cursor: 'pointer' }}>
+					退出
+				</span>
+			);
+		} else {
+			return (
+				<Link to="/login" className="denglu">
+					登录
+				</Link>
+			);
+		}
+	}
+	writeIcon() {
+		if (this.props.loginStatus) {
+			return (
+				<Link to="/write" className="wenzhang">
+					<i className="iconfont">&#xe608;</i>写文章
+				</Link>
+			);
+		} else {
+			return (
+				<Link to="/login" className="wenzhang">
+					<i className="iconfont">&#xe608;</i>写文章
+				</Link>
+			);
+		}
+	}
+	componentDidMount() {
+		this.props.loginFun()
+	}
 	render() {
 		return (
 			<div className="haeder">
@@ -87,15 +121,11 @@ class Header extends Component {
 					<div className="haeder__content--right">
 						<i className="iconfont aa">&#xe636;</i>
 						<i className="iconfont beta">&#xe609;</i>
-						<Link to="/login" className="denglu">
-							登录
-						</Link>
-						<a href="/" className="zhuce">
+						{this.loginIcon()}
+						<Link to="/" className="zhuce">
 							注册
-						</a>
-						<Link to="/write" className="wenzhang">
-							<i className="iconfont">&#xe608;</i>写文章
 						</Link>
+						{this.writeIcon()}
 					</div>
 				</div>
 			</div>
@@ -108,7 +138,8 @@ const mapStateToProps = (state) => {
 		focused: state.getIn([ 'header', 'focused' ]),
 		inputList: state.getIn([ 'header', 'inputList' ]),
 		page: state.getIn([ 'header', 'page' ]),
-		tab: state.getIn([ 'header', 'tab' ])
+		tab: state.getIn([ 'header', 'tab' ]),
+		loginStatus: state.getIn([ 'header', 'loginStatus' ])
 	};
 };
 const mapDispatchToProps = (dispatch) => {
@@ -131,6 +162,12 @@ const mapDispatchToProps = (dispatch) => {
 		changePage(page, icon) {
 			icon.style.transform = `rotate(${page * -360}deg)`;
 			dispatch(actionCreators.changePage());
+		},
+		loginOut() {
+			dispatch(actionCreators.loginOut());
+		},
+		loginFun(){
+			dispatch(actionCreators.loginFun());
 		}
 	};
 };

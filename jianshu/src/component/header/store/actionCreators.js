@@ -17,6 +17,12 @@ export const tabHide = () => ({
 export const changePage = () => ({
     type: contants.CHANGE_PAGE
 })
+export const loginIn = () => ({
+    type: contants.LOGIN_IN
+})
+export const loginOut = () => ({
+    type: contants.LOGIN_OUT
+})
 
 const changeList = (data) => ({
     type: contants.GET_INPUTLIST,
@@ -27,6 +33,19 @@ export const getInputList = () => {
     return (dispatch) => {
         axios.get('https://www.easy-mock.com/mock/5d2fce82f639fd623b3043ab/jianshu/inputList').then(res => {
             dispatch(changeList(res.data.inputList))
+        }).catch(() => {
+            console.log("error")
+        })
+    }
+}
+export const loginFun = () => {
+    return (dispatch) => {
+        axios.get('https://www.easy-mock.com/mock/5d2fce82f639fd623b3043ab/jianshu/login').then(res => {
+            const data = res.data.success
+            dispatch({
+                type: contants.LOGIN_FUN,
+                data
+            })
         }).catch(() => {
             console.log("error")
         })

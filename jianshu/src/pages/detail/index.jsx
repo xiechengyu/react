@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import {withRouter} from 'react-router-dom'
 import './style.scss'
 
 class Detail extends PureComponent {
@@ -9,10 +10,10 @@ class Detail extends PureComponent {
     render() { 
         return ( 
             <div className="detail">
-                detail~
+                detail{this.props.match.params.id}~
             </div>
          );
     }
 }
  
-export default Detail;
+export default withRouter(Detail);

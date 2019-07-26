@@ -6,7 +6,8 @@ const defaultState = fromJS({
   tab:false,
   inputList:[],
   page:0,
-  totalPage:1
+  totalPage:1,
+  loginStatus:true
 })
 export default (state=defaultState,action) => {
   if(action.type === contants.INPUT_FOCUS){
@@ -26,6 +27,15 @@ export default (state=defaultState,action) => {
   }
   if(action.type === contants.TAB_HIDE){
     return state.set("tab",false)
+  }
+  if(action.type === contants.LOGIN_FUN){
+    return state.set("loginStatus",action.data)
+  }
+  if(action.type === contants.LOGIN_IN){
+    return state.set("loginStatus",true)
+  }
+  if(action.type === contants.LOGIN_OUT){
+    return state.set("loginStatus",false)
   }
   if(action.type === contants.CHANGE_PAGE){
     let newPage = state.get("page")
