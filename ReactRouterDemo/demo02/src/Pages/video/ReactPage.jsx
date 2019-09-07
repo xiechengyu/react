@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function (){
+export default ()=>{
     return(
-        <h2>我是react页面</h2>
+        <h2>我是react</h2>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-export default function(){
+export default ()=>{
     return(
         <h2>我是flutter</h2>
     )
